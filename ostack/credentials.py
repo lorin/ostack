@@ -1,5 +1,6 @@
 import keystoneclient.v2_0.client as ksclient
 import glanceclient.v1.client as glclient
+import novaclient.v1_1.client as nvclient
 
 import os
 
@@ -39,3 +40,11 @@ def glance():
     glance_endpoint = ks.service_catalog.url_for(service_type='image',
                                                  endpoint_type='publicURL')
     return glclient.Client(glance_endpoint, token=ks.auth_token)
+
+
+def nova():
+    """ Retrieve an authenticated nova client """
+    return nvclient.Client(auth_url=_creds['auth_url'],
+                           username=_creds['username'],
+                           api_key=_creds['password'],
+                           project_id=_creds['tenant_name'])
