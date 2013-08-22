@@ -11,6 +11,13 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   credentials
+   endpoints
+   images
+   instances
+   keypairs
+   tokens
+
 
 
 Indices and tables

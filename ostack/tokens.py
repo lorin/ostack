@@ -2,5 +2,5 @@ from . import credentials
 
 
 def get():
-    """ Retrieve the keystone token """
+    """ Retrieve a keystone token """
     return credentials.keystone().auth_token
