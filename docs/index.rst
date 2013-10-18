@@ -78,6 +78,12 @@ Create a keypair::
     from ostack import keypairs
     keypair = keypairs.create('mykey', os.path.expanduser('~/.ssh/id_rsa.pub'))
 
+List keypairs::
+
+    from ostack import keypairs
+    for keypair in keypairs.list():
+        print keypair
+
 
 Image (glance)
 ==============
@@ -94,6 +100,43 @@ Retrive an image by name::
     cirros = ostack.images.get(name='cirros')
 
 
+Specifying credentials explicitly
+=================================
+
+By default, *ostack* will look for the following environment variables and
+use these as credentials to authenticate against the OpenStack endpoint.
+
+ * ``OS_AUTH_URL``
+ * ``OS_USERNAME``
+ * ``OS_PASSWORD``
+ * ``OS_TENANT_NAME``
+ * ``OS_REGION``
+ * ``ST_AUTH`` (Swift authentication without keystone)
+ * ``ST_USER`` (Swift authentication without keystone)
+ * ``ST_KEY`` (Swift authentication without keystone)
+
+You can also explicitly specify authentications with Identity Service
+(keystone)::
+
+    from ostack import credentials
+    credentials.set(auth_url="http://10.10.0.100:5000/v2.0/",
+                    username="admin",
+                    password='23jheajsh2$#'
+                    tenant_name='acme',
+                    region='northeast')
+
+If you are using Object Storage (Swift) with the built-in TempAuth
+authentication, specify credentials like this:::
+
+    from ostack import credentials
+    credentials.set_swift(auth_url="http://10.10.0.100:8080",
+                          user="barney:acme",
+                          key="$E&%^rftcuty")
+
+
+
+    )
+
 
 
 API reference
@@ -102,11 +145,14 @@ API reference
 .. toctree::
    :maxdepth: 2
 
+   account
+   containers
    credentials
    endpoints
    images
    instances
    keypairs
+   objects
    tokens
 
 

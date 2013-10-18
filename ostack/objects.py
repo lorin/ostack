@@ -38,7 +38,7 @@ class Object(object):
 
         Note that this does not contain version name or account name
 
-        >>> Object(container_name='foo', name='baz/quux.png').path
+        >>> Object(container_name='foo', name='baz/quux.png').full_name
         'foo/baz/quux.png'
         """
         return "{}/{}".format(self.container_name, self.name)
@@ -64,15 +64,24 @@ class Object(object):
                             full_name=self.full_name)
         return self._url
 
-    def generate_temp_url(self, expires=int(time()+60*60*24),
+    def generate_temp_url(self, expires=None,
                           method='GET'):
         """ Generate a temporary url for this object
 
-        expires is in Unix time.
+        expires : int
+            Timestamp in Unix time. The temporary url will be accessible
+            until this time. If set to *None*, the expiration date will
+            be 24 hours after this method is called.
 
-        Default expiry is 24 hours after this method is called
+        method : str
+            Permitted http method. By default, only allows ``GET``.
 
-        By default, allows GET only"""
+        Returns the url.
+
+        """
+
+        if expires is None:
+            expires = int(time()+60*60*24)
 
         # If the secret key exists, retrieve it. Otherwise, generate it
         try:

@@ -1,3 +1,9 @@
+'''
+
+Object Storage (Swift) containers
+
+'''
+
 from .credentials import swift
 from .objects import Object
 

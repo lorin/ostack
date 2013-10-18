@@ -1,3 +1,11 @@
+'''
+
+Specify credentials and access authenticated clients for
+each OpenStack project.
+
+
+'''
+
 import glanceclient.v1.client as glclient
 import keystoneclient.v2_0.client as ksclient
 from neutronclient.v2_0 import client as ntclient

@@ -1,3 +1,10 @@
+'''
+
+Retrieve REST API endpoints for different services
+
+
+'''
+
 from . import credentials
 
 
@@ -31,3 +38,7 @@ def network():
 def volume():
     """ Retrieve the volume service (cinder) endpoint """
     return get('volume')
+
+def object_store():
+    """ Retrieve the object store (swift) endpoint """
+    return get('object-store')

@@ -1,7 +1,8 @@
 # ostack
 
-
 Humane Python bindings for OpenStack
+
+See the documentation for more details.
 
 ## Usage
 

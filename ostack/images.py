@@ -1,7 +1,12 @@
+'''
+
+Openstack images
+
+'''
+
 import __builtin__
 
 from .credentials import glance
-
 
 
 def list():
