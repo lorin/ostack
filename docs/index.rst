@@ -3,10 +3,37 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+******
+ostack
+******
+
 ostack: Humane Python bindings for OpenStack
 ============================================
 
-Contents:
+
+`ostack` is a Python API for OpenStack that sits on top of the native
+bindings and provides a programming interface that makes it simpler to
+do common OpenStack tasks.
+
+::
+
+    import ostack.keypairs
+    import ostack.images
+    import ostack.instances
+    import ostack.floating_ips
+
+    ostack.credentials.set(...) # Optional, loads from env by default
+    keypair = ostack.keypairs.create('mykey', os.path.expanduser('~/.ssh/id_rsa.pub'))
+    for image in ostack.images.list():
+       print image.name
+    cirros = ostack.images.get(name='cirros')
+    instance = ostack.instances.create(...)
+    ip = ostack.floating_ips.create(...)
+    instance.ports[0].set_floating_ip(ip)
+
+
+API reference
+=============
 
 .. toctree::
    :maxdepth: 2
