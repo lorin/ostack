@@ -6,6 +6,7 @@ Humane Python bindings for OpenStack
 ## Usage
 
     import ostack.credentials
+    import ostack.containers
     import ostack.keypairs
     import ostack.images
     import ostack.instances
@@ -19,3 +20,7 @@ Humane Python bindings for OpenStack
     instance = ostack.instances.create(...)
     ip = ostack.floating_ips.create(...)
     instance.ports[0].set_floating_ip(ip)
+    for container in ostack.containers.list():
+      print container.name
+    for obj in containers.get('mycontainer'):
+      print obj.name

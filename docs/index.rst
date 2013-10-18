@@ -33,7 +33,9 @@ do common OpenStack tasks.
     ip = ostack.floating_ips.create(...)
     instance.ports[0].set_floating_ip(ip)
     for container in ostack.containers.list():
-      print container
+      print container.name
+    for obj in containers.get('mycontainer'):
+      print obj.name
 
 
 API reference
