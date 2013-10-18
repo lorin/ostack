@@ -34,8 +34,66 @@ do common OpenStack tasks.
     instance.ports[0].set_floating_ip(ip)
     for container in ostack.containers.list():
       print container.name
-    for obj in containers.get('mycontainer'):
+    for obj in containers.Container('mycontainer'):
       print obj.name
+
+
+Object storage (swift)
+======================
+
+
+List containers::
+
+    from ostack import containers
+    for container in containers.list():
+      print container.name
+
+List the contents of a container::
+
+    from ostack import containers
+    for obj in containers.Container('mycontainer'):
+        print obj.name
+
+
+Retrieve the url associated with an object::
+
+    from ostack import objects
+    obj = Object('mycontainer/path/to/object')
+    print obj.url
+
+
+Generate a temporary url to an object::
+
+    from ostack import objects
+    obj = Object('mycontainer/path/to/object')
+    print obj.generate_temp_url()
+
+
+
+Compute (nova)
+==============
+
+Create a keypair::
+
+    from ostack import keypairs
+    keypair = keypairs.create('mykey', os.path.expanduser('~/.ssh/id_rsa.pub'))
+
+
+Image (glance)
+==============
+
+List images::
+
+    from ostack import images
+    for image in images.list():
+        print image.name
+
+Retrive an image by name::
+
+    from ostack import images
+    cirros = ostack.images.get(name='cirros')
+
+
 
 
 API reference
