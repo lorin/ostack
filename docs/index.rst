@@ -17,6 +17,8 @@ do common OpenStack tasks.
 
 ::
 
+    import ostack.credentials
+    import ostack.containers
     import ostack.keypairs
     import ostack.images
     import ostack.instances
@@ -30,6 +32,8 @@ do common OpenStack tasks.
     instance = ostack.instances.create(...)
     ip = ostack.floating_ips.create(...)
     instance.ports[0].set_floating_ip(ip)
+    for container in ostack.containers.list():
+      print container
 
 
 API reference
